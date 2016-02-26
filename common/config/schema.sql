@@ -10,10 +10,17 @@
 
 CREATE TABLE `user_type` (
   `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
-  `user_type_name` int(11) DEFAULT NULL,
+  `user_type_name` varchar(45) DEFAULT '',
   `user_type_value` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `user_type` (`id`, `user_type_name`, `user_type_value`)
+VALUES
+	(1, 'Free', 10),
+	(2, 'Paid', 30);
+
+
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -43,12 +50,23 @@ CREATE TABLE `status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+INSERT INTO `status` (`id`, `status_name`, `status_value`)
+VALUES
+	(1, 'Active', 10),
+	(2, 'Pending', 5);
+
+
 CREATE TABLE `role` (
   `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `role_name` varchar(45) DEFAULT NULL,
   `role_value` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO `role` (`id`, `role_name`, `role_value`)
+VALUES
+	(1, 'User', 10),
+	(2, 'Admin', 20);
 
 
 CREATE TABLE `profile` (
@@ -72,3 +90,9 @@ CREATE TABLE `gender` (
   `gender_name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `gender` (`id`, `gender_name`)
+VALUES
+	(1, 'male'),
+	(2, 'female');
