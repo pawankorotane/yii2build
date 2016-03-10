@@ -57,7 +57,7 @@ class ProfileController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView()
     {
 
         if ($already_exists = RecordHelper::userHas('profile')) {
@@ -79,7 +79,7 @@ class ProfileController extends Controller
         $model = new Profile();
 
         $model->user_id = \Yii::$app->user->identity->id;
-        if ($already_exists = RecordHelpers::userHas('profile')) {
+        if ($already_exists = RecordHelper::userHas('profile')) {
             return $this->render('view', [
                         'model' => $this->findModel($already_exists),
             ]);
@@ -97,16 +97,17 @@ class ProfileController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model = Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->one()) {
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view']);
+            } else {
+                return $this->render('update', [ 'model' => $model,
+                ]);
+            }
         } else {
-            return $this->render('update', [
-                        'model' => $model,
-            ]);
+            throw new NotFoundHttpException('No Such Profile.');
         }
     }
 
@@ -116,11 +117,11 @@ class ProfileController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete()
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $model = Profile::find()->where(['user_id' => Yii::$app->user->id])->one();
+        $this->findModel($model->id)->delete();
+        return $this->redirect(['site/index']);
     }
 
     /**

@@ -87,6 +87,15 @@ class Profile extends \yii\db\ActiveRecord
         ];
     }
 
+    public function beforeValidate()
+    {
+        if ($this->birthday != null) {
+            $new_date_format = date('Y-m-d', strtotime($this->birthday));
+            $this->birthday = $new_date_format;
+        }
+        return parent::beforeValidate();
+    }
+    
     /**
      * @return \yii\db\ActiveQuery
      */

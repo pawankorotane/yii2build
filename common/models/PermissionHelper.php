@@ -25,7 +25,7 @@ class PermissionHelper
      * @param mixed $model_name
      * @param mixed $model_id
      */
-    public function userMustBeOwner($model_name, $model_id)
+    public static function userMustBeOwner($model_name, $model_id)
     {
         $connection = \Yii::$app->db;
         $userid = Yii::$app->user->identity->id;
