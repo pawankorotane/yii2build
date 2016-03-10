@@ -7,7 +7,7 @@ namespace common\models;
  *
  * @author pawankorotane
  */
-use common\models\ValueHelpers;
+use common\models\ValueHelper;
 use yii;
 use yii\web\Controller;
 use yii\helpers\Url;
@@ -52,7 +52,7 @@ class PermissionHelper
      */
     public static function requireUpgradeTo($user_type_name)
     {
-        if (Yii::$app->user->identity->user_type_id != ValueHelpers::getUserTypeValue($user_type_name)) {
+        if (Yii::$app->user->identity->user_type_id != ValueHelper::getUserTypeValue($user_type_name)) {
             return Yii::$app->getResponse()->redirect(Url::to(['upgrade/index']));
         }
     }
@@ -64,7 +64,7 @@ class PermissionHelper
      */
     public static function requireStatus($status_name)
     {
-        if (Yii::$app->user->identity->status == ValueHelpers::getStatusValue($status_name)) {
+        if (Yii::$app->user->identity->status == ValueHelper::getStatusValue($status_name)) {
             return true;
         } else {
             return false;
@@ -78,7 +78,7 @@ class PermissionHelper
      */
     public static function requireMinimumStatus($status_name)
     {
-        if (Yii::$app->user->identity->status_id >= ValueHelpers::getStatusValue($status_name)) {
+        if (Yii::$app->user->identity->status_id >= ValueHelper::getStatusValue($status_name)) {
             return true;
         } else {
             return false;
@@ -92,7 +92,7 @@ class PermissionHelper
      */
     public static function requireRole($role_name)
     {
-        if (Yii::$app->user->identity->role_id == ValueHelpers::getRoleValue($role_name)) {
+        if (Yii::$app->user->identity->role_id == ValueHelper::getRoleValue($role_name)) {
             return true;
         } else {
             return false;
@@ -106,7 +106,7 @@ class PermissionHelper
      */
     public static function requireMinimumRole($role_name)
     {
-        if (Yii::$app->user->identity->role_id >= ValueHelpers::getRoleValue($role_name)) {
+        if (Yii::$app->user->identity->role_id >= ValueHelper::getRoleValue($role_name)) {
             return true;
         } else {
             return false;

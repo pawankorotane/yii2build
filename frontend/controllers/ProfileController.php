@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\RecordHelper;
+use common\models\PermissionHelper;
 
 /**
  * ProfileController implements the CRUD actions for Profile model.
@@ -32,7 +33,21 @@ class ProfileController extends Controller
                         'actions' => ['index', 'view', 'create', 'update', 'delete'], 'allow' => true,
                         'roles' => ['@'],
                     ],
-                ],],
+                ],
+            ],
+            'access2' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['index', 'view', 'create', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                    return PermissionHelper::requireStatus('Active');
+                }
+                    ],
+                ]]
         ];
     }
 
@@ -99,6 +114,7 @@ class ProfileController extends Controller
      */
     public function actionUpdate()
     {
+        PermissionHelper::requireUpgradeTo('Paid');
         if ($model = Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->one()) {
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view']);
