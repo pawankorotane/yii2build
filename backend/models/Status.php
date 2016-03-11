@@ -29,6 +29,7 @@ class Status extends \yii\db\ActiveRecord
     {
         return [
             [['status_value'], 'integer'],
+            [['status_name','status_value'], 'required'],
             [['status_name'], 'string', 'max' => 45]
         ];
     }

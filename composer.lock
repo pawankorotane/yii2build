@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5d5ce0021c199eb1449e38a09e5d603e",
-    "content-hash": "2a07a2befc8ab3837b695c75b5b5f420",
+    "hash": "01256a979e3e60ca662f3a2140ab5fff",
+    "content-hash": "b27d56d54cbba4a3510c20ff307ee2ce",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -842,6 +842,43 @@
             "time": "2015-05-29 06:29:14"
         },
         {
+            "name": "iutbay/yii2-fontawesome",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iutbay/yii2-fontawesome.git",
+                "reference": "da7ae426f927f87932a86d7ca3aa7e84e22b31a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iutbay/yii2-fontawesome/zipball/da7ae426f927f87932a86d7ca3aa7e84e22b31a6",
+                "reference": "da7ae426f927f87932a86d7ca3aa7e84e22b31a6",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "iutbay\\yii2fontawesome\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Kevin LEVRON",
+                    "email": "kevin.levron@gmail.com"
+                }
+            ],
+            "description": "Simple Font Awesome helper for Yii2",
+            "homepage": "https://github.com/iutbay/yii2-fontawesome",
+            "keywords": [
+                "FontAwesome",
+                "extension",
+                "icon",
+                "yii2"
+            ],
+            "time": "2015-11-03 13:35:36"
+        },
+        {
             "name": "phpspec/php-diff",
             "version": "v1.0.2",
             "source": {
@@ -1121,7 +1158,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "kartik-v/yii2-social": 20
+        "kartik-v/yii2-social": 20,
+        "iutbay/yii2-fontawesome": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
