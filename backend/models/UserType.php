@@ -2,7 +2,6 @@
 
 namespace backend\models;
 
-use common\models\User;
 use Yii;
 
 /**
@@ -14,7 +13,6 @@ use Yii;
  */
 class UserType extends \yii\db\ActiveRecord
 {
-
     /**
      * @inheritdoc
      */
@@ -29,7 +27,7 @@ class UserType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_type_value'], 'integer', 'required'],
+            [['user_type_value'], 'integer'],
             [['user_type_name'], 'string', 'max' => 45]
         ];
     }
@@ -40,18 +38,18 @@ class UserType extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_type_name' => 'User Type Name',
-            'user_type_value' => 'User Type Value',
+            'id' => Yii::t('app', 'ID'),
+            'user_type_name' => Yii::t('app', 'User Type Name'),
+            'user_type_value' => Yii::t('app', 'User Type Value'),
         ];
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @inheritdoc
+     * @return UserTypeQuery the active query used by this AR class.
      */
-    public function getUsers()
+    public static function find()
     {
-        return $this->hasMany(User::className(), ['user_type_id' => 'user_type_value']);
+        return new UserTypeQuery(get_called_class());
     }
-
 }
