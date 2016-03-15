@@ -273,7 +273,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getStatusName()
     {
-        return $this->status ? $this->status->status_name : '- no status -';
+        return $this->status ? $this->status : '- no status -';
     }
 
     /**

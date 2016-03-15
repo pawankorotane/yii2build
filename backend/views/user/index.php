@@ -19,26 +19,21 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
+    <?=
+    GridView::widget([ 'dataProvider' => $dataProvider, 'filterModel' => $searchModel, 'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'username',
-            'auth_key',
-            'password_hash',
-            'password_reset_token',
-            // 'email:email',
-            // 'role_id',
-            // 'user_type_id',
-            // 'status',
-            // 'created_at',
-            // 'updated_at',
-
+//'id',
+            ['attribute' => 'userIdLink', 'format' => 'raw'],
+            ['attribute' => 'userLink', 'format' => 'raw'],
+            ['attribute' => 'profileLink', 'format' => 'raw'],
+            'email:email',
+            'roleName',
+            'userTypeName',
+            'statusName',
+            'created_at',
             ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+        ],]);
+    ?>
+
 
 </div>
