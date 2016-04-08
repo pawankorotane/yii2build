@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['attribute' => 'userLink', 'format' => 'raw'],
             'first_name',
             'last_name',
-            'birthdate',
+            'birthday',
             'gender.gender_name',
             'created_at',
             'updated_at',

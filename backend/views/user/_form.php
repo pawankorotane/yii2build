@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="user-form">
     <?php $form = ActiveForm::begin(); ?>
-    <?= $form->field($model, 'status_id')->dropDownList($model->statusList, [ 'prompt' => 'Please Choose One']); ?>
+    <?= $form->field($model, 'status')->dropDownList($model->statusList, [ 'prompt' => 'Please Choose One']); ?>
     <?= $form->field($model, 'role_id')->dropDownList($model->roleList, [ 'prompt' => 'Please Choose One']); ?>
     <?= $form->field($model, 'user_type_id')->dropDownList($model->userTypeList, [ 'prompt' => 'Please Choose One']); ?>
     <?= $form->field($model, 'username')->textInput(['maxlength' => 255]) ?> <?= $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
